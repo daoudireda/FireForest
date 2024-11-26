@@ -16,6 +16,12 @@ public class FireSimulationBFS {
     private static int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // Right, Down, Left, Up
 
 
+    /**
+     * Load the configuration from the properties file
+     *
+     * @param filePath path to the configuration file
+     * @throws IOException if an I/O error occurs
+     */
     public static void loadConfig(String filePath) throws IOException {
         Properties props = new Properties();
         try (InputStream input = new FileInputStream(filePath)) {
@@ -39,6 +45,11 @@ public class FireSimulationBFS {
         }
     }
 
+    /**
+     * Simulate fire propagation in the forest using BFS
+     *
+     * @return an array containing the number of cells reduced to ashes and the number of steps elapsed
+     */
     public static int[] simulateFire() {
         int ashes = 0; // Number of cells reduced to ashes
         int steps = 0; // Number of steps elapsed
