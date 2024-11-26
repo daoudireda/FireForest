@@ -53,7 +53,7 @@ public class FireSimulationBFS {
             steps = Math.max(steps, current.time);
 
             // Burn the current cell to ashes
-            //"Le feu s'éteint dans cette case (la case est remplie de cendre et ne peut ensuite plus brûler)"
+            //The fire is extinguished in this square (the square is filled with ash and can then burn no more).
             grid[x][y] = 2; // Ashes
             ashes++;
 
@@ -61,7 +61,7 @@ public class FireSimulationBFS {
             for (int[] dir : directions) {
                 int newX = x + dir[0];
                 int newY = y + dir[1];
-                //Il y a une probabilité p que le feu se propage à chacune des 4 cases adjacentes
+                //There is a probability p that the fire will spread to each of the 4 adjacent squares.
                 if (isValidCell(newX, newY) && grid[newX][newY] == 0) {
                     // Propagate fire to the adjacent cell
                     if (Math.random() < probability) { // Randomly decide whether to propagate fire
