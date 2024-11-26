@@ -31,6 +31,18 @@ class SimulationFireForestBFSTest {
     }
 
     @Test
+    void testLoadConfig() throws IOException {
+        FireSimulationBFS.loadConfig("src/test/java/configTest.properties");
+        assertEquals(5, FireSimulationBFS.getHeight(), "Incorrect height.");
+        assertEquals(5, FireSimulationBFS.getWidth(), "Incorrect width.");
+        assertEquals(0.5, FireSimulationBFS.getProbability(), "Incorrect probability.");
+        int[][] grid = FireSimulationBFS.getGrid();
+        assertEquals(1, grid[1][1], "Incorrect fire state at (1,1).");
+        assertEquals(1, grid[2][2], "Incorrect fire state at (2,2).");
+    }
+
+
+    @Test
     void testSimulationFirePropagation() throws IOException {
         FireSimulationBFS.loadConfig("src/test/java/configTest.properties");
         int[] results = FireSimulationBFS.simulateFire();
@@ -40,5 +52,6 @@ class SimulationFireForestBFSTest {
         assertTrue(results[0] > 0, "No huts were burnt to the ground.");
         assertTrue(results[1] > 0, "Incorrect number of steps.");
     }
+
 
 }

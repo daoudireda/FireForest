@@ -97,4 +97,37 @@ public class FireSimulationBFS {
     private static boolean isValidCell(int x, int y) {
         return x >= 0 && x < height && y >= 0 && y < width;
     }
+
+
+    public static int[][] getGrid() {
+        return grid;
+    }
+
+    public static void setGrid(int[][] grid) {
+        FireSimulationBFS.grid = grid;
+    }
+
+    public static int getHeight() {
+        return height;
+    }
+
+    public static void setHeight(int height) {
+        FireSimulationBFS.height = height;
+    }
+
+    public static int getWidth() {
+        return width;
+    }
+
+    public static void setWidth(int width) {
+        FireSimulationBFS.width = width;
+    }
+
+    public static double getProbability() {
+        return probability;
+    }
+
+    public static void setProbability(double probability) {
+        FireSimulationBFS.probability = probability;
+    }
 }
