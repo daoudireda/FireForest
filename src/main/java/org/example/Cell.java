@@ -5,7 +5,7 @@ public class Cell {
 
     int x;
     int y;
-    int time;
+    int time; // Time when the cell caught fire or was visited
 
     Cell(int x, int y, int time) {
         this.x = x;

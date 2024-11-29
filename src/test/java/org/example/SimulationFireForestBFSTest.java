@@ -15,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class SimulationFireForestBFSTest {
 
 
+    public static final String SRC_TEST_JAVA_CONFIG_TEST_PROPERTIES = "src/test/java/configTest.properties";
+
     @BeforeEach
     void setUp() throws IOException {
         Properties props = new Properties();
@@ -23,16 +25,17 @@ class SimulationFireForestBFSTest {
         props.setProperty("propagationProbability", "0.5");
         props.setProperty("fireStart", "1,1;2,2");
 
-        try (OutputStream out = new FileOutputStream("src/test/java/configTest.properties")) {
+        try (OutputStream out = new FileOutputStream(SRC_TEST_JAVA_CONFIG_TEST_PROPERTIES)) {
             props.store(out, null);
         }
 
+        FireSimulationBFS.loadConfig(SRC_TEST_JAVA_CONFIG_TEST_PROPERTIES);
 
     }
 
     @Test
-    void testLoadConfig() throws IOException {
-        FireSimulationBFS.loadConfig("src/test/java/configTest.properties");
+    void testLoadConfig() {
+
         assertEquals(5, FireSimulationBFS.getHeight(), "Incorrect height.");
         assertEquals(5, FireSimulationBFS.getWidth(), "Incorrect width.");
         assertEquals(0.5, FireSimulationBFS.getProbability(), "Incorrect probability.");
@@ -43,8 +46,8 @@ class SimulationFireForestBFSTest {
 
 
     @Test
-    void testSimulationFirePropagation() throws IOException {
-        FireSimulationBFS.loadConfig("src/test/java/configTest.properties");
+    void testSimulationFirePropagation() {
+
         int[] results = FireSimulationBFS.simulateFire();
         // Validate the number of burned cells and steps
 
